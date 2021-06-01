@@ -32,22 +32,17 @@ paragraph = """I have three visions for India. In 3000 years of our history, peo
                space, Professor Satish Dhawan, who succeeded him and Dr. Brahm Prakash, father of nuclear material.
                I was lucky to have worked with all three of them closely and consider this the great opportunity of my life. 
                I see four milestones in my career"""
-               
-               
+
+#Tokenizing sentences (i.e. paragraph --> list of sentences) 
 sentences = nltk.sent_tokenize(paragraph)
+#creating an object
 stemmer = PorterStemmer()
 
-# Stemming
+print(f'Before stemming length of individual sentences:\n{[len(sentence) for sentence in sentences]}\n')
+#Stemming
 for i in range(len(sentences)):
-    words = nltk.word_tokenize(sentences[i])
+    words = nltk.word_tokenize(sentences[i].lower())
     words = [stemmer.stem(word) for word in words if word not in set(stopwords.words('english'))]
-    sentences[i] = ' '.join(words)   
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    sentences[i] = " ".join(words)
+# print(sentences)
+print(f'\nAfter stemming length of individual sentences:\n{[len(sentence) for sentence in sentences]}\n')
