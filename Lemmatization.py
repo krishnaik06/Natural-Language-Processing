@@ -40,4 +40,4 @@ for i in range(len(sentences)):
     sentences[i] = " ".join(words)
 # print(sentences)
 
-print(f'\nAfter lemmatization length of individual sntences:\n{[len(sentence) for sentence in sentences]}')
+print(f'\nAfter lemmatization length of individual sentences:\n{[len(sentence) for sentence in sentences]}')
