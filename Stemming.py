@@ -34,14 +34,15 @@ paragraph = """I have three visions for India. In 3000 years of our history, peo
                I see four milestones in my career"""
                
                
-sentences = nltk.sent_tokenize(paragraph)
-stemmer = PorterStemmer()
+sentences = nltk.sent_tokenize(paragraph) #tokenizing paragraph to sentence
+stemmer = PorterStemmer() #object "stemmer" for PorterStemmer
 
 # Stemming
-for i in range(len(sentences)):
-    words = nltk.word_tokenize(sentences[i])
-    words = [stemmer.stem(word) for word in words if word not in set(stopwords.words('english'))]
-    sentences[i] = ' '.join(words)   
+for i in range(len(sentences)): #for loop from 1-31(because after the tokenizing paragraph we get a list of 31 sentences)
+    words = nltk.word_tokenize(sentences[i]) #now taking each word of each sentence
+    words = [stemmer.stem(word) for word in words if word not in set(stopwords.words('english'))]  
+    #words = {[stemmer.stem(word)} {for word in words {if word not in set(stopwords.words('english'))] }} which means the words get stemmatized only if it isnt a STOPWORD
+    sentences[i] = ' '.join(words)   #joing back the words to get the resultant sentence
     
     
     
