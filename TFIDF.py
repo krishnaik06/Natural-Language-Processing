@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan  2 22:19:40 2019
-@author: Krish.Naik
-"""
+
 
 import nltk
 
@@ -50,6 +46,6 @@ for i in range(len(sentences)):
     corpus.append(review)
     
 # Creating the TF-IDF model
-from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer #TfidfVectorizer is used for TFIDF , rest is all same
 cv = TfidfVectorizer()
 X = cv.fit_transform(corpus).toarray()
