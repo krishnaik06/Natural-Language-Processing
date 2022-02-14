@@ -32,28 +32,28 @@ paragraph =  """I have three visions for India. In 3000 years of our history, pe
                I see four milestones in my career"""
                
                
-# Cleaning the texts
-import re
+# Cleaning the texts (DATA CLEANING)
+import re # for regular expression
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 from nltk.stem import WordNetLemmatizer
 
-ps = PorterStemmer()
+ps = PorterStemmer() #we will  generally perform lemmatization only tho
 wordnet=WordNetLemmatizer()
 sentences = nltk.sent_tokenize(paragraph)
-corpus = []
+corpus = [] #reason- After cleaning the text we will keep the text here
 for i in range(len(sentences)):
-    review = re.sub('[^a-zA-Z]', ' ', sentences[i])
-    review = review.lower()
-    review = review.split()
-    review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))]
-    review = ' '.join(review)
-    corpus.append(review)
+    review = re.sub('[^a-zA-Z]', ' ', sentences[i]) #apart from a-z or A-Z re.sub replaces all characters like ", . / ?" with" "; sentences[i]) means applying for each sentences gathered after tokenization like arr[i]
+    review = review.lower() # lowwering the sentence
+    review = review.split() #.split means() means splitting up the sentences into list of words basically word tokenizastion
+    review = [ps.stem(word) for word in review if not word in set(stopwords.words('english'))] # now if the words are not stopwords they are stemmatized and the stopwords are removed
+    review = ' '.join(review) #finally words rejoin to give the resultant sentence
+    corpus.append(review) # this sentences we put in the blank list "corpus"
     
-# Creating the Bag of Words model
-from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer(max_features = 1500)
-X = cv.fit_transform(corpus).toarray()
+# Creating the Bag of Words model (FEATURE EXTRACTION)
+from sklearn.feature_extraction.text import CountVectorizer # CountVectorizer for creating BOW from scikit learn
+cv = CountVectorizer(max_features = 1500)  #cv is just an object for CountVectorizer (max_features = 1500---limiting the max no of features that will be created after BOW to 1500)
+X = cv.fit_transform(corpus).toarray() #cv.fit_transform(list of sentences after sent_tokenize of paragraph).toarray()
 
 
 

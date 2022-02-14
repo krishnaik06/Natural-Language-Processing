@@ -34,10 +34,11 @@ paragraph = """Thank you all so very much. Thank you to the Academy.
                
                
 sentences = nltk.sent_tokenize(paragraph)
-lemmatizer = WordNetLemmatizer()
+lemmatizer = WordNetLemmatizer() #WordNetLemmatizer() for lemmatization
 
 # Lemmatization
 for i in range(len(sentences)):
-    words = nltk.word_tokenize(sentences[i])
+    words = nltk.word_tokenize(sentences[i]) # taking each word of each sentences
     words = [lemmatizer.lemmatize(word) for word in words if word not in set(stopwords.words('english'))]
+    #words = [lemmatizer.lemmatize(word)     (for word in words){ if word not in set(stopwords.words('english'))]} If the words are not stopwords they atre lemmatized
     sentences[i] = ' '.join(words)      
